@@ -8,10 +8,8 @@
 
   outputs = { self, nixpkgs, flake-utils, ... }: flake-utils.lib.eachDefaultSystem (system: let pkgs = nixpkgs.legacyPackages.${system}; in {
 
-    # users.extraUsers.myusername= {
-    #   subUidRanges = [{ startUid = 100000; count = 65536; }];
-    #   subGidRanges = [{ startGid = 100000; count = 65536; }];
-    # };
+    # echo "username:100000:65536">>/etc/subuid
+    # echo "username:100000:65536">>/etc/subgid
 
     devShells.default = pkgs.mkShell {
       buildInputs = [
